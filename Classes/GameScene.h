@@ -14,6 +14,10 @@
 class GameScene : public cocos2d::Layer
 {
 private:
+    int direction      = -1;
+    float velocity     = 0.1;
+    float acceleration = 0.2;
+    cocos2d::Vec2 playerPoint;
     cocos2d::DrawNode *drawNode;
     void update(float delta);
 public:
