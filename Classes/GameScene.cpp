@@ -28,32 +28,20 @@ Scene* GameScene::createScene()
 // on "init" you need to initialize your instance
 bool GameScene::init()
 {
-    //////////////////////////////
-    // 1. super init first
-    if ( !Layer::init() )
-    {
+    if (!Layer::init()) {
         return false;
     }
-    
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    // 初期値
-    this->playerPoint = Vec2(visibleSize.width / 2, visibleSize.height / 2);
+    this->player = std::shared_ptr<Player>(new Player(this));
 
-    // プレイヤーの位置を表示するnode
-    this->drawNode = DrawNode::create();
-    this->addChild(this->drawNode);
-
-    // タッチイベントであれする
+    // タッチイベントをplayerに通知する
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [=](Touch *t, Event *e) -> bool {
-        this->direction = 1;
+        this->player->onTouchBegan();
         return true;
     };
-    listener->onTouchEnded     = [=](Touch *t, Event *e) { this->direction = -1; };
-    listener->onTouchCancelled = [=](Touch *t, Event *e) { this->direction = -1; };
-
+    listener->onTouchEnded     = [=](Touch *t, Event *e) { this->player->onTouchEnded(); };
+    listener->onTouchCancelled = [=](Touch *t, Event *e) { this->player->onTouchEnded(); };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
     this->scheduleUpdate();
@@ -62,9 +50,5 @@ bool GameScene::init()
 
 void GameScene::update(float delta)
 {
-    this->velocity      += this->acceleration * this->direction;
-    this->playerPoint.y += this->velocity;
-
-    this->drawNode->clear();
-    this->drawNode->drawPoint(this->playerPoint, 30, Color4F(1, 1, 1, 1));
+    this->player->update(delta);
 }

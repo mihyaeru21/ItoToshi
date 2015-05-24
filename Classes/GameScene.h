@@ -9,16 +9,14 @@
 #ifndef __ItoToshi__GameScene__
 #define __ItoToshi__GameScene__
 
+#include <memory>
 #include "cocos2d.h"
+#include "Player.h"
 
 class GameScene : public cocos2d::Layer
 {
 private:
-    int direction      = -1;
-    float velocity     = 0.1;
-    float acceleration = 0.2;
-    cocos2d::Vec2 playerPoint;
-    cocos2d::DrawNode *drawNode;
+    std::shared_ptr<Player> player;
     void update(float delta);
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
