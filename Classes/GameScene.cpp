@@ -32,6 +32,9 @@ bool GameScene::init()
         return false;
     }
 
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
     this->player = std::shared_ptr<Player>(new Player(this));
 
     // タッチイベントをplayerに通知する
@@ -44,6 +47,12 @@ bool GameScene::init()
     listener->onTouchCancelled = [=](Touch *t, Event *e) { this->player->onTouchEnded(); };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
+    // ゲームオーバーを表示するためのラベル
+    this->gameOverLabel = Label::createWithTTF("GameOver!!!", "fonts/Marker Felt.ttf", 24);
+    gameOverLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+    gameOverLabel->setVisible(false);  // 隠しておく
+    this->addChild(gameOverLabel);
+
     this->scheduleUpdate();
     return true;
 }
@@ -51,4 +60,17 @@ bool GameScene::init()
 void GameScene::update(float delta)
 {
     this->player->update(delta);
+
+    if (!this->isInScreen(this->player->getPoint())) {
+        this->gameOverLabel->setVisible(true);
+    }
+}
+
+bool GameScene::isInScreen(cocos2d::Vec2 p)
+{
+    Size s = Director::getInstance()->getVisibleSize();
+
+    if (p.x < 0 || p.x > s.width)  return false;
+    if (p.y < 0 || p.y > s.height) return false;
+    return true;
 }

@@ -12,7 +12,6 @@ USING_NS_CC;
 
 Player::Player(cocos2d::Node *parent)
 {
-
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -43,4 +42,9 @@ void Player::onTouchBegan()
 void Player::onTouchEnded()
 {
     this->direction = -1;
+}
+
+cocos2d::Vec2 Player::getPoint()
+{
+    return this->point;
 }

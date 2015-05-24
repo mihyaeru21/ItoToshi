@@ -16,8 +16,10 @@
 class GameScene : public cocos2d::Layer
 {
 private:
+    bool isInScreen(cocos2d::Vec2);
     std::shared_ptr<Player> player;
     void update(float delta);
+    cocos2d::Label *gameOverLabel;
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();

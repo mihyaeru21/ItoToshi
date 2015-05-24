@@ -25,6 +25,7 @@ public:
     void update(float delta);
     void onTouchBegan();
     void onTouchEnded();
+    cocos2d::Vec2 getPoint();
 };
 
 #endif /* defined(__ItoToshi__Player__) */
