@@ -14,6 +14,7 @@
 #include "cocos2d.h"
 #include "Player.h"
 #include "Hole.h"
+#include "Coordinate.h"
 
 enum class GameState {
     init,

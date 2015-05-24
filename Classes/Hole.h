@@ -17,7 +17,6 @@ private:
     cocos2d::Vec2 point;
     cocos2d::Size size;
     cocos2d::DrawNode *node;
-    float velocity = -5;
     float makeHeight();
     float makeY(float height);
 

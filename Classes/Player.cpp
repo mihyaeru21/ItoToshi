@@ -7,6 +7,7 @@
 //
 
 #include "Player.h"
+#include "Coordinate.h"
 
 USING_NS_CC;
 
@@ -16,9 +17,9 @@ Player::Player(cocos2d::Node *parent)
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     // 初期値
-//    this->point    = Vec2(visibleSize.width / 4, visibleSize.height / 2);
-    this->point    = Vec2(0, visibleSize.height / 2);
-    this->velocity = Vec2(1, 0);
+    this->point    = Vec2(visibleSize.width / 4, visibleSize.height / 2);
+//    this->point    = Vec2(0, visibleSize.height / 2);
+    this->velocity = Vec2(5, 0);
 
     // プレイヤーの位置を表示するnode
     this->node = DrawNode::create();
@@ -32,6 +33,8 @@ Player::~Player()
 
 void Player::update(float delta)
 {
+    auto c = Coordinate::getInstance();
+
     this->velocity.y += this->acceleration * this->direction;
     this->point      += this->velocity;
 
@@ -39,7 +42,7 @@ void Player::update(float delta)
     if (this->prevPoints.size() > 100) this->prevPoints.pop_front();
     int i = 0;
     for (auto p : this->prevPoints) {
-        this->raw_points[i++] = p;
+        this->raw_points[i++] = c->logical2physical(p);
     }
 
     this->node->clear();

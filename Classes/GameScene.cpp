@@ -78,6 +78,9 @@ void GameScene::update(float delta)
 
 void GameScene::updatePlaying(float delta)
 {
+    // 座標変換君を更新
+    Coordinate::getInstance()->update(delta);
+
     // 要素の位置を更新
     this->player->update(delta);
     for (auto hole : this->holes) {
@@ -107,9 +110,10 @@ void GameScene::updatePlaying(float delta)
     }
 }
 
-bool GameScene::isInScreen(cocos2d::Vec2 p)
+bool GameScene::isInScreen(cocos2d::Vec2 logicalPoint)
 {
     Size s = Director::getInstance()->getVisibleSize();
+    auto p = Coordinate::getInstance()->logical2physical(logicalPoint);
 
     if (p.x < 0 || p.x > s.width)  return false;
     if (p.y < 0 || p.y > s.height) return false;
@@ -128,6 +132,8 @@ void GameScene::start()
     this->schedule([=](float delta) {
         this->holes.push_back(std::make_shared<Hole>(this));
     }, 3, createHoleTimerKey);
+
+    Coordinate::getInstance()->reset();
 
     this->state = GameState::playing;
 }

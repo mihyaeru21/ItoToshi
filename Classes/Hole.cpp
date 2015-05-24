@@ -7,16 +7,20 @@
 //
 
 #include "Hole.h"
+#include "Coordinate.h"
 
 USING_NS_CC;
 
 Hole::Hole(cocos2d::Node *parent)
 {
+    auto c = Coordinate::getInstance();
+
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     this->size  = Size(10, this->makeHeight());
-    this->point = Vec2(visibleSize.width - 10, this->makeY(this->size.height));
+    auto p = Vec2(visibleSize.width - 10, 0);
+    this->point = c->physical2logical(p);
+    this->point.y = this->makeY(this->size.height);
 
     this->node = DrawNode::create();
     parent->addChild(this->node);
@@ -29,11 +33,13 @@ Hole::~Hole()
 
 void Hole::update(float delta)
 {
-    this->point.x += this->velocity;
+//    this->point.x += this->velocity;
     Vec2 destPoint = this->point + Vec2(this->size.width, this->size.height);
 
+    auto c = Coordinate::getInstance();
+
     this->node->clear();
-    this->node->drawRect(this->point, destPoint, Color4F(1, 1, 1, 1));
+    this->node->drawRect(c->logical2physical(this->point), c->logical2physical(destPoint), Color4F(1, 1, 1, 1));
 }
 
 bool Hole::collisePoint(cocos2d::Vec2 point)

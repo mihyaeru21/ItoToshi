@@ -68,6 +68,7 @@
 		F13A5C571B10C21A0001489B /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C551B10C21A0001489B /* GameScene.cpp */; };
 		F13A5C5D1B11A3460001489B /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C5B1B11A3460001489B /* Player.cpp */; };
 		F13A5C601B11B0390001489B /* Hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C5E1B11B0390001489B /* Hole.cpp */; };
+		F13A5C661B11EA740001489B /* Coordinate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C641B11EA740001489B /* Coordinate.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,8 @@
 		F13A5C5C1B11A3460001489B /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		F13A5C5E1B11B0390001489B /* Hole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hole.cpp; sourceTree = "<group>"; };
 		F13A5C5F1B11B0390001489B /* Hole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hole.h; sourceTree = "<group>"; };
+		F13A5C641B11EA740001489B /* Coordinate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coordinate.cpp; sourceTree = "<group>"; };
+		F13A5C651B11EA740001489B /* Coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +305,8 @@
 				F13A5C5C1B11A3460001489B /* Player.h */,
 				F13A5C5E1B11B0390001489B /* Hole.cpp */,
 				F13A5C5F1B11B0390001489B /* Hole.h */,
+				F13A5C641B11EA740001489B /* Coordinate.cpp */,
+				F13A5C651B11EA740001489B /* Coordinate.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -507,6 +512,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				F13A5C571B10C21A0001489B /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				F13A5C661B11EA740001489B /* Coordinate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
