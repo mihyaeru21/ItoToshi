@@ -16,7 +16,9 @@ Player::Player(cocos2d::Node *parent)
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     // 初期値
-    this->point = Vec2(visibleSize.width / 4, visibleSize.height / 2);
+//    this->point    = Vec2(visibleSize.width / 4, visibleSize.height / 2);
+    this->point    = Vec2(0, visibleSize.height / 2);
+    this->velocity = Vec2(1, 0);
 
     // プレイヤーの位置を表示するnode
     this->node = DrawNode::create();
@@ -30,11 +32,18 @@ Player::~Player()
 
 void Player::update(float delta)
 {
-    this->velocity      += this->acceleration * this->direction;
-    this->point.y += this->velocity;
+    this->velocity.y += this->acceleration * this->direction;
+    this->point      += this->velocity;
+
+    this->prevPoints.push_back(this->point);
+    if (this->prevPoints.size() > 100) this->prevPoints.pop_front();
+    int i = 0;
+    for (auto p : this->prevPoints) {
+        this->raw_points[i++] = p;
+    }
 
     this->node->clear();
-    this->node->drawPoint(this->point, 30, Color4F(1, 1, 1, 1));
+    this->node->drawPoly(this->raw_points, (unsigned)this->prevPoints.size(), false, Color4F(1, 1, 1, 1));
 }
 
 void Player::onTouchBegan()
