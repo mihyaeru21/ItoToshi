@@ -66,8 +66,7 @@ void GameScene::update(float delta)
 {
     // 要素の位置を更新
     this->player->update(delta);
-    for (auto iter = this->holes.begin(); iter != this->holes.end(); ++iter) {
-        auto hole = *iter;
+    for (auto hole : this->holes) {
         hole->update(delta);
     }
 
@@ -88,8 +87,7 @@ void GameScene::update(float delta)
     }
 
     // 当たり判定
-    for (auto iter = this->holes.begin(); iter != this->holes.end(); ++iter) {
-        auto hole = *iter;
+    for (auto hole : this->holes) {
         if (hole->collisePoint(this->player->getPoint())) {
             this->gameOverLabel->setVisible(true);
             this->unscheduleUpdate();
