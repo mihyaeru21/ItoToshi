@@ -40,6 +40,7 @@ bool GameScene::init()
     // タッチイベントをplayerに通知する設定
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [=](Touch *t, Event *e) -> bool {
+        if (this->player == nullptr) return false;
         this->player->onTouchBegan();
         return true;
     };
