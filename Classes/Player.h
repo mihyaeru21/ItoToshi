@@ -9,7 +9,7 @@
 #ifndef __ItoToshi__Player__
 #define __ItoToshi__Player__
 
-#include <stdio.h>
+#include "cocos2d.h"
 
 class Player
 {

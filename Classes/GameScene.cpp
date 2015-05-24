@@ -53,17 +53,38 @@ bool GameScene::init()
     gameOverLabel->setVisible(false);  // 隠しておく
     this->addChild(gameOverLabel);
 
+    // 3秒毎に穴を作る
+    this->schedule([=](float delta) {
+        this->holes.push_back(std::make_shared<Hole>(this));
+    }, 3, "hoge");
+
     this->scheduleUpdate();
     return true;
 }
 
 void GameScene::update(float delta)
 {
+    // 要素の位置を更新
     this->player->update(delta);
+    for (auto iter = this->holes.begin(); iter != this->holes.end(); ++iter) {
+        auto hole = *iter;
+        hole->update(delta);
+    }
 
+    // 画面外判定
     if (!this->isInScreen(this->player->getPoint())) {
         this->gameOverLabel->setVisible(true);
         this->unscheduleUpdate();
+    }
+    auto iter = this->holes.begin();
+    while (iter != this->holes.end()) {
+        auto hole = *iter;
+        if (!this->isInScreen(hole->getPoint())) {
+            this->holes.erase(iter);
+        }
+        else {
+            iter++;
+        }
     }
 }
 

@@ -21,8 +21,6 @@ Player::Player(cocos2d::Node *parent)
     // プレイヤーの位置を表示するnode
     this->node = DrawNode::create();
     parent->addChild(this->node);
-
-    parent->scheduleUpdate();
 }
 
 void Player::update(float delta)

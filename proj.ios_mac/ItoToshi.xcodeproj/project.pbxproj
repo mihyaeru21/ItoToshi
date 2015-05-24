@@ -67,6 +67,7 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		F13A5C571B10C21A0001489B /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C551B10C21A0001489B /* GameScene.cpp */; };
 		F13A5C5D1B11A3460001489B /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C5B1B11A3460001489B /* Player.cpp */; };
+		F13A5C601B11B0390001489B /* Hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F13A5C5E1B11B0390001489B /* Hole.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,8 @@
 		F13A5C561B10C21A0001489B /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		F13A5C5B1B11A3460001489B /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		F13A5C5C1B11A3460001489B /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		F13A5C5E1B11B0390001489B /* Hole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hole.cpp; sourceTree = "<group>"; };
+		F13A5C5F1B11B0390001489B /* Hole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hole.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,8 @@
 				F13A5C561B10C21A0001489B /* GameScene.h */,
 				F13A5C5B1B11A3460001489B /* Player.cpp */,
 				F13A5C5C1B11A3460001489B /* Player.h */,
+				F13A5C5E1B11B0390001489B /* Hole.cpp */,
+				F13A5C5F1B11B0390001489B /* Hole.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -498,6 +503,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				F13A5C5D1B11A3460001489B /* Player.cpp in Sources */,
+				F13A5C601B11B0390001489B /* Hole.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				F13A5C571B10C21A0001489B /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
