@@ -63,6 +63,7 @@ void GameScene::update(float delta)
 
     if (!this->isInScreen(this->player->getPoint())) {
         this->gameOverLabel->setVisible(true);
+        this->unscheduleUpdate();
     }
 }
 
