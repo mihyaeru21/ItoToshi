@@ -86,6 +86,15 @@ void GameScene::update(float delta)
             iter++;
         }
     }
+
+    // 当たり判定
+    for (auto iter = this->holes.begin(); iter != this->holes.end(); ++iter) {
+        auto hole = *iter;
+        if (hole->collisePoint(this->player->getPoint())) {
+            this->gameOverLabel->setVisible(true);
+            this->unscheduleUpdate();
+        }
+    }
 }
 
 bool GameScene::isInScreen(cocos2d::Vec2 p)

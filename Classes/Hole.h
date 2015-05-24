@@ -18,6 +18,8 @@ private:
     cocos2d::Size size;
     cocos2d::DrawNode *node;
     float velocity = -5;
+    float makeHeight();
+    float makeY(float height);
 
 public:
     Hole(cocos2d::Node *parent);
