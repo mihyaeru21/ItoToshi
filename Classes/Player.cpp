@@ -23,6 +23,11 @@ Player::Player(cocos2d::Node *parent)
     parent->addChild(this->node);
 }
 
+Player::~Player()
+{
+    this->node->removeFromParent();
+}
+
 void Player::update(float delta)
 {
     this->velocity      += this->acceleration * this->direction;

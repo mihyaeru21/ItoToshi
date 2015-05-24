@@ -22,6 +22,7 @@ private:
     float acceleration = 0.2;
 public:
     Player(cocos2d::Node *parent);
+    ~Player();
     void update(float delta);
     void onTouchBegan();
     void onTouchEnded();

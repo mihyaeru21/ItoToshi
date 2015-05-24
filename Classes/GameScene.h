@@ -15,14 +15,26 @@
 #include "Player.h"
 #include "Hole.h"
 
+enum class GameState {
+    init,
+    playing,
+    gameOver,
+};
+
 class GameScene : public cocos2d::Layer
 {
 private:
-    bool isInScreen(cocos2d::Vec2);
+    GameState state = GameState::init;
     std::shared_ptr<Player> player;
-    void update(float delta);
-    cocos2d::Label *gameOverLabel;
     std::vector<std::shared_ptr<Hole>> holes;
+    cocos2d::Label *gameOverLabel;
+    cocos2d::MenuItemFont *startButton;
+
+    void start();
+    void gameOver();
+    void update(float delta);
+    void updatePlaying(float delta);
+    bool isInScreen(cocos2d::Vec2);
 
 public:
     static cocos2d::Scene* createScene();
