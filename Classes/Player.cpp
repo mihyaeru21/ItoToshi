@@ -39,7 +39,7 @@ void Player::update(float delta)
     this->point      += this->velocity;
 
     this->prevPoints.push_back(this->point);
-    if (this->prevPoints.size() > 100) this->prevPoints.pop_front();
+    if (this->prevPoints.size() > 50) this->prevPoints.pop_front();
     int i = 0;
     for (auto p : this->prevPoints) {
         this->raw_points[i++] = c->logical2physical(p);

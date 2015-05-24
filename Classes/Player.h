@@ -18,7 +18,7 @@ class Player
 private:
     cocos2d::Vec2 point;
     std::deque<cocos2d::Vec2> prevPoints;
-    cocos2d::Vec2 raw_points[100];
+    cocos2d::Vec2 raw_points[50];
     cocos2d::DrawNode *node;
 
     int direction      = -1;
